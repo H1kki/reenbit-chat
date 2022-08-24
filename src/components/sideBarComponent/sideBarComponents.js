@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import cls from './sideBarComponent.module.css'
-import {Link} from "react-router-dom";
 import {Context} from "../../index";
 import ChatRoomComponent from "./chatRoom/chatRoomComponent";
 import {useCollectionData} from "react-firebase-hooks/firestore";
@@ -17,11 +16,11 @@ const SideBarComponents = () => {
         }
     }
 
-    //console.log('rOOms', rooms)
     const search = (e) => {
         if(roomsState) {
             setValue(e.target.value)
-            const filteredRooms = rooms.filter(el => el.room.includes(value))
+            console.log(value)
+            const filteredRooms = rooms.filter(el => el.room.includes(value.trim()))
             setRoomsState(filteredRooms)
             //console.log('FILTERED', filteredRooms)
         }
@@ -33,9 +32,6 @@ const SideBarComponents = () => {
         }
     }, [rooms])
 
-
-
-    //initialState.map(el => <ChatRoomComponent name={el.name} message={el.messages[el.messages.length-1]}/>)
     if(loading) return <h1>Loading</h1>
     return (
         <div className={cls.sideBar}>
