@@ -1,0 +1,40 @@
+.sideBar {
+    width: 25%;
+    margin-right: 10px;
+}
+
+.userAvatar {
+    position: relative;
+    width: 45px;
+}
+
+.searchInput {
+    width: 100%;
+    outline: none;
+    padding: 5px 30px;
+}
+
+.searchContainer {
+    position: relative;
+    margin-top: 15px;
+}
+
+.chatRoom {
+    display: flex;
+    margin-top: 20px;
+}
+
+.chatInfo {
+    margin-left: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.chatsContainer {
+    margin-top: 20px;
+}
+
+.date {
+    width: 50px
+}
