@@ -6,7 +6,6 @@ import {useCollectionData} from "react-firebase-hooks/firestore";
 
 const SideBarComponents = () => {
     const {firestore} = useContext(Context)
-    const [value, setValue] = useState('')
     const [rooms, loading] = useCollectionData(firestore.collection('chatRooms'))
     const [roomsState, setRoomsState] = useState(null)
     const renderRooms = (rooms) => {
@@ -17,12 +16,10 @@ const SideBarComponents = () => {
     }
 
     const search = (e) => {
+        console.log(!!roomsState)
         if(roomsState) {
-            setValue(e.target.value)
-            console.log(value)
-            const filteredRooms = rooms.filter(el => el.room.includes(value.trim()))
+            const filteredRooms = rooms.filter(el => el.room.includes(e.target.value.trim()))
             setRoomsState(filteredRooms)
-            //console.log('FILTERED', filteredRooms)
         }
     }
 
@@ -40,7 +37,7 @@ const SideBarComponents = () => {
                 <i className={`fa-regular fa-circle-check`} style={{color: "green", position: "absolute", top: 25, left: 30}}></i>
             </div>
             <div className={cls.searchContainer}>
-                <input className={cls.searchInput} type='text' placeholder={"Search or start new chat"} onChange={search} value={value}/>
+                <input className={cls.searchInput} type='text' placeholder={"Search or start new chat"} onChange={search}/>
                 <i className="fa-solid fa-magnifying-glass" style={{position: "absolute", top: 7, left: 8, color: "grey"}}></i>
             </div>
             <div className={cls.chatsContainer}>
